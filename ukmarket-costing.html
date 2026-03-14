@@ -6,43 +6,11 @@
     <title>TripFactory UK Market - Tour Costing Sheets</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f5f5; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f5f5;
+            padding-top: 72px;
+        }
 
-        /* Header Styles - Matching UK Market */
-        .header {
-            background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
-            color: white;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .header-left { display: flex; align-items: center; gap: 20px; }
-        .header img { height: 50px; background: white; padding: 5px; border-radius: 5px; }
-        .header h1 { font-size: 24px; }
-        .header-right { display: flex; align-items: center; gap: 20px; }
-        .header-right img { height: 40px; background: white; padding: 3px; border-radius: 4px; }
-
-        /* Navigation */
-        .nav-bar {
-            background: #1e3a5f;
-            padding: 0 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        .nav-bar a {
-            color: white;
-            text-decoration: none;
-            padding: 15px 20px;
-            display: inline-block;
-            transition: background 0.3s;
-            font-size: 14px;
-        }
-        .nav-bar a:hover, .nav-bar a.active {
-            background: rgba(255,255,255,0.1);
-        }
-        .nav-bar a.active { border-bottom: 3px solid #ffd700; }
-
-        /* Main Content */
+        
         .main-content {
             padding: 20px;
             max-width: 1400px;
@@ -101,7 +69,80 @@
         .quick-links a:hover {
             text-decoration: underline;
         }
-    </style>
+    
+        /* ===== UNIVERSAL NAV (matches main site style) ===== */
+        .tf-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(30, 41, 59, 0.97);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            z-index: 9999;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            gap: 0;
+            box-sizing: border-box;
+        }
+        .tf-nav .tf-brand {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            margin-right: 28px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        .tf-nav .tf-brand .tf-cyan { color: #06b6d4; }
+        .tf-nav .tf-brand small { font-size: 11px; font-weight: 400; color: #94a3b8; margin-left: 6px; }
+        .tf-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .tf-nav-links::-webkit-scrollbar { display: none; }
+        .tf-nav-links a {
+            position: relative;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 13px;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            padding: 8px 10px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: color 0.2s;
+            font-weight: 400;
+        }
+        .tf-nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 2px; left: 10px; right: 10px;
+            height: 2px;
+            background: #06b6d4;
+            transform: scaleX(0);
+            transition: transform 0.25s ease;
+        }
+        .tf-nav-links a:hover { color: #fff; }
+        .tf-nav-links a:hover::after { transform: scaleX(1); }
+        .tf-nav-links a.tf-active { color: #06b6d4; font-weight: 600; }
+        .tf-nav-links a.tf-active::after { transform: scaleX(1); }
+        .tf-nav-user {
+            margin-left: auto;
+            flex-shrink: 0;
+            text-align: right;
+            padding-left: 20px;
+        }
+        .tf-nav-user p { margin: 0; }
+        .tf-nav-user .tf-name { font-size: 13px; font-weight: 600; color: #fff; font-family: 'Segoe UI', system-ui, sans-serif; }
+        .tf-nav-user .tf-role { font-size: 11px; color: #94a3b8; font-family: 'Segoe UI', system-ui, sans-serif; }
+        /* ===== END UNIVERSAL NAV ===== */
+
+        </style>
 </head>
 <body>
     <!-- Header -->
@@ -120,17 +161,24 @@
     </div>
 
     <!-- Navigation -->
-    <div class="nav-bar">
-        <a href="ukmarket.html">🏠 Dashboard</a>
-        <a href="ukmarket-contacts.html">📞 Contacts</a>
-        <a href="ukmarket-hotels.html">🏨 Hotels</a>
-        <a href="ukmarket-7h-rates.html">⭐ 7H Rates</a>
-        <a href="ukmarket-tours.html">🎯 Tours</a>
-        <a href="ukmarket-newtours-2026.html">🗺️ Tour Collection 2026</a>
-        <a href="ukmarket-tasks.html">✅ Tasks</a>
-        <a href="ukmarket-wiki.html">📚 Wiki</a>
-        <a href="ukmarket-costing.html" class="active">💰 Costing</a>
-    </div>
+    <nav class="tf-nav">
+        <a href="ukmarket.html" class="tf-brand"><span class="tf-cyan">Trip</span>Factory<small>UK Market</small></a>
+        <div class="tf-nav-links">
+            <a href="ukmarket.html">Dashboard</a>
+            <a href="ukmarket-contacts.html">Contacts</a>
+            <a href="ukmarket-hotels.html">Hotels</a>
+            <a href="ukmarket-7h-rates.html">7H Rates</a>
+            <a href="ukmarket-tours.html">Tours</a>
+            <a href="ukmarket-newtours-2026.html">Tour Collection 2026</a>
+            <a href="ukmarket-tasks.html">Tasks</a>
+            <a href="ukmarket-wiki.html">Wiki</a>
+            <a href="uk_tours_costing.html" class="tf-active">Costing</a>
+        </div>
+        <div class="tf-nav-user">
+            <p class="tf-name">Ajay Kawa</p>
+            <p class="tf-role">Head of Global Business Development</p>
+        </div>
+    </nav>
 
     <!-- Main Content -->
     <div class="main-content">

@@ -314,56 +314,106 @@
             .tab-content { display: block !important; page-break-after: always; }
         }
     
-        .site-nav {
+        
+        
+        .site-nav .brand span { color: #06b6d4; }
+        
+        
+        
+
+        /* ===== UNIVERSAL NAV (matches main site style) ===== */
+        .tf-nav {
             position: fixed;
             top: 0; left: 0; right: 0;
-            background: rgba(15, 23, 42, 0.97);
+            background: rgba(30, 41, 59, 0.97);
             backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            z-index: 1000;
-            height: 56px;
+            z-index: 9999;
+            height: 64px;
             display: flex;
             align-items: center;
-            padding: 0 16px;
+            padding: 0 24px;
             gap: 0;
-            overflow-x: auto;
+            box-sizing: border-box;
         }
-        .site-nav .brand {
-            font-size: 16px;
+        .tf-nav .tf-brand {
+            font-size: 20px;
             font-weight: 700;
             color: #fff;
             text-decoration: none;
-            margin-right: 24px;
+            margin-right: 28px;
             white-space: nowrap;
             flex-shrink: 0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
         }
-        .site-nav .brand span { color: #06b6d4; }
-        .site-nav a {
+        .tf-nav .tf-brand .tf-cyan { color: #06b6d4; }
+        .tf-nav .tf-brand small { font-size: 11px; font-weight: 400; color: #94a3b8; margin-left: 6px; }
+        .tf-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .tf-nav-links::-webkit-scrollbar { display: none; }
+        .tf-nav-links a {
+            position: relative;
             color: #cbd5e1;
             text-decoration: none;
-            font-size: 12px;
-            padding: 5px 8px;
+            font-size: 13px;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            padding: 8px 10px;
             white-space: nowrap;
-            transition: color 0.2s;
             flex-shrink: 0;
+            transition: color 0.2s;
+            font-weight: 400;
         }
-        .site-nav a:hover { color: #fff; }
-        .site-nav a.active { color: #06b6d4; font-weight: 600; }
-</style>
+        .tf-nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 2px; left: 10px; right: 10px;
+            height: 2px;
+            background: #06b6d4;
+            transform: scaleX(0);
+            transition: transform 0.25s ease;
+        }
+        .tf-nav-links a:hover { color: #fff; }
+        .tf-nav-links a:hover::after { transform: scaleX(1); }
+        .tf-nav-links a.tf-active { color: #06b6d4; font-weight: 600; }
+        .tf-nav-links a.tf-active::after { transform: scaleX(1); }
+        .tf-nav-user {
+            margin-left: auto;
+            flex-shrink: 0;
+            text-align: right;
+            padding-left: 20px;
+        }
+        .tf-nav-user p { margin: 0; }
+        .tf-nav-user .tf-name { font-size: 13px; font-weight: 600; color: #fff; font-family: 'Segoe UI', system-ui, sans-serif; }
+        .tf-nav-user .tf-role { font-size: 11px; color: #94a3b8; font-family: 'Segoe UI', system-ui, sans-serif; }
+        /* ===== END UNIVERSAL NAV ===== */
+
+        </style>
 </head>
 <body>
-<nav class="site-nav">
-    <a href="ukmarket.html" class="brand"><span>Trip</span>Factory <small>UK Market</small></a>
-    <a href="ukmarket.html">Dashboard</a>
-    <a href="ukmarket-contacts.html">Contacts</a>
-    <a href="ukmarket-hotels.html">Hotels</a>
-    <a href="ukmarket-7h-rates.html">7H Rates</a>
-    <a href="ukmarket-tours.html">Tours</a>
-    <a href="ukmarket-newtours-2026.html">Tour Collection 2026</a>
-    <a href="ukmarket-tasks.html">Tasks</a>
-    <a href="ukmarket-wiki.html">Wiki</a>
-    <a href="uk_tours_costing.html" class="active">Costing</a>
-</nav>
+<nav class="tf-nav">
+        <a href="ukmarket.html" class="tf-brand"><span class="tf-cyan">Trip</span>Factory<small>UK Market</small></a>
+        <div class="tf-nav-links">
+            <a href="ukmarket.html">Dashboard</a>
+            <a href="ukmarket-contacts.html">Contacts</a>
+            <a href="ukmarket-hotels.html">Hotels</a>
+            <a href="ukmarket-7h-rates.html">7H Rates</a>
+            <a href="ukmarket-tours.html">Tours</a>
+            <a href="ukmarket-newtours-2026.html">Tour Collection 2026</a>
+            <a href="ukmarket-tasks.html">Tasks</a>
+            <a href="ukmarket-wiki.html">Wiki</a>
+            <a href="uk_tours_costing.html" class="tf-active">Costing</a>
+        </div>
+        <div class="tf-nav-user">
+            <p class="tf-name">Ajay Kawa</p>
+            <p class="tf-role">Head of Global Business Development</p>
+        </div>
+    </nav>
     <div class="header">
         <h1>🇬🇧 TripFactory UK Tours 2026 - Costing Sheets</h1>
         <p>Comprehensive costing tool for all 7 UK tour products. Enter GBP costs to auto-calculate INR pricing.</p>
